@@ -1,13 +1,13 @@
-// const express=require('express');
-// const app=express();
-// const env=require("dotenv").config();
-// const db=require('./config/db')
-// db();
+const express=require('express');
+const app=express();
+const env=require("dotenv").config();
+const db=require('./config/db')
+db();
 
 
-// app.listen(process.env.PORT, ()=>{
-//   console.log("surver running")
-// })
+app.listen(process.env.PORT, ()=>{
+  console.log("surver running")
+})
 
 
-// module.exports=app;
+module.exports=app;
