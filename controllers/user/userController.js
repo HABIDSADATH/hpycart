@@ -35,10 +35,10 @@ const loadSignup= async (req,res)=>{
 }
 
 const signup=async(req,res)=>{
-  const {name,email,phon,password}=req.body;
+  const {name,email,phone,password}=req.body;
   try{
     
-    const newUser=new User({name,email,phon,password})
+    const newUser=new User({name,email,phone,password})
     console.log(newUser)
     await newUser.save()
 

@@ -36,32 +36,42 @@
         .google-btn img {
             height: 20px;
         }
+        .error-msg{
+            color: red;
+            font-size: 0.75rem;
+            display: none;
+        }
     </style>
 </head>
 <body>
 
     <div class="signup-form">
         <h2 class="text-center mb-4">Signup</h2>
-        <form method="post" action="/signup">
+        <form id="signform" method="post" action="/signup">
             <div class="mb-3">
                 <label for="name" class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="name" name="name" placeholder="Enter your full name" required>
+                <div id="error1" class="error-msg"></div>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email address</label>
                 <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
+                <div id="error2" class="error-msg"></div>
             </div>
             <div class="mb-3">
                 <label for="phone" class="form-label">Phone Number</label>
-                <input type="tel" class="form-control" id="phone" name="phoen" placeholder="Enter your phone number" required>
+                <input type="string" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                <div id="error3" class="error-msg"></div>
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                <div id="error4" class="error-msg"></div>
             </div>
             <div class="mb-3">
                 <label for="confirm-password" class="form-label">Confirm Password</label>
                 <input type="password" class="form-control" id="cPassword" name="confirm-password" placeholder="Re-enter your password" required>
+                <div id="error5" class="error-msg"></div>
             </div>
             
             <button type="submit" class="btn btn-primary w-100">Sign Up</button>
@@ -75,7 +85,108 @@
         <p class="text-center mt-3">Already have an account? <a href="#">Login here</a></p>
     </div>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        const nameid = document.getElementById("name");
+        const emailid = document.getElementById("email");
+        const phoneid = document.getElementById("phone");
+        const passid = document.getElementById("password");
+        const cpassid = document.getElementById("cPassword");
+        const error1 = document.getElementById("error1");
+        const error2 = document.getElementById("error2");
+        const error3 = document.getElementById("error3");
+        const error4 = document.getElementById("error4");
+        const error5 = document.getElementById("error5");
+        const signform = document.getElementById("signform");
+
+        function nameValidateChecking() {
+            const nameval = nameid.value.trim();
+            const namepattern = /^[A-Za-z\s]+$/;
+
+            if (nameval === "") {
+                error1.style.display = "block";
+                error1.innerHTML = "Please enter a valid name";
+            } else if (!namepattern.test(nameval)) {
+                error1.style.display = "block";
+                error1.innerHTML = "Name can only contain alphabets and spaces";
+            } else {
+                error1.style.display = "none";
+                error1.innerHTML = "";
+            }
+        }
+
+        function emailValidateChecking() {
+            const emailval = emailid.value.trim();
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            if (!emailPattern.test(emailval)) {
+                error2.style.display = "block";
+                error2.innerHTML = "Invalid format";
+            } else {
+                error2.style.display = "none";
+                error2.innerHTML = "";
+            }
+        }
+
+        function phoneValidateChecking() {
+            const phoneval = phoneid.value.trim();
+
+            if (phoneval === "") {
+                error3.style.display = "block";
+                error3.innerHTML = "Enter a valid phone number";
+            } else if (phoneval.length !== 10 || isNaN(phoneval)) {
+                error3.style.display = "block";
+                error3.innerHTML = "Enter a 10-digit number";
+            } else {
+                error3.style.display = "none";
+                error3.innerHTML = "";
+            }
+        }
+
+        function passValidateChecking() {
+            const passval = passid.value;
+            const cpassval = cpassid.value;
+            const alpha = /[a-zA-Z]/;
+            const digit = /\d/;
+
+            if (passval.length < 8) {
+                error4.style.display = "block";
+                error4.innerHTML = "Should contain at least 8 characters";
+            } else if (!alpha.test(passval) || !digit.test(passval)) {
+                error4.style.display = "block";
+                error4.innerHTML = "Should contain numbers and alphabets";
+            } else {
+                error4.style.display = "none";
+                error4.innerHTML = "";
+            }
+
+            if (passval !== cpassval) {
+                error5.style.display = "block";
+                error5.innerHTML = "Passwords do not match";
+            } else {
+                error5.style.display = "none";
+                error5.innerHTML = "";
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            signform.addEventListener("submit", function (e) {
+                nameValidateChecking();
+                emailValidateChecking();
+                phoneValidateChecking();
+                passValidateChecking();
+
+                if (
+                    error1.innerHTML ||
+                    error2.innerHTML ||
+                    error3.innerHTML ||
+                    error4.innerHTML ||
+                    error5.innerHTML
+                ) {
+                    e.preventDefault();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
