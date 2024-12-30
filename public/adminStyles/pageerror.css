@@ -1,0 +1,28 @@
+
+   
+    .not-found-container {
+      text-align: center;
+    }
+    .not-found-container h1 {
+      font-size: 120px;
+      margin: 0;
+      font-weight: bold;
+      color: #dc3545;
+    }
+    .not-found-container h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .not-found-container a {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 18px;
+      color: #fff;
+      background-color: #007bff;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    .not-found-container a:hover {
+      background-color: #0056b3;
+    }

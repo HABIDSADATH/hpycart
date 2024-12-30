@@ -70,16 +70,20 @@
             </div>
             <div class="mb-3">
                 <label for="confirm-password" class="form-label">Confirm Password</label>
-                <input type="password" class="form-control" id="cPassword" name="confirm-password" placeholder="Re-enter your password" required>
+                <input type="password" class="form-control" id="cPassword" name="cPassword" placeholder="Re-enter your password" required>
                 <div id="error5" class="error-msg"></div>
             </div>
             
+            <div class="alert  text-center">
+                <%=locals.message%>
+              </div>
+
             <button type="submit" class="btn btn-primary w-100">Sign Up</button>
         </form>
         <div class="text-center mt-3">
             <div class="google-btn">
                 <img src="https://www.gstatic.com/images/branding/product/1x/gsa_48dp.png" alt="Google Icon">
-                <span>Sign up with Google</span>
+                <span><a style="text-decoration: none; color: black;" href="/auth/google">Sign up with Google</a></span>
             </div>
         </div>
         <p class="text-center mt-3">Already have an account? <a href="#">Login here</a></p>

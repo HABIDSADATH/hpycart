@@ -1,0 +1,74 @@
+<!-- dashboard.ejs -->
+
+<%- include('../../views/partials/admin/header') %>
+
+<!-- Admin Dashboard Layout -->
+<div class="container">
+    <div class="row">
+        <!-- Sidebar Section -->
+        <div class="col-md-3">
+            <div class="sidebar">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Customers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Settings</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content Section -->
+        <div class="col-md-9">
+            <div class="dashboard-content">
+                <h1>Welcome to Admin Dashboard</h1>
+                <p>Here you can manage your eCommerce website's products, orders, customers, and more.</p>
+
+                <!-- Dashboard Widgets -->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Orders</h5>
+                                <p class="card-text">1500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Products</h5>
+                                <p class="card-text">500</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Total Customers</h5>
+                                <p class="card-text">300</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Dashboard Content can go here -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../../views/partials/admin/footer') %>
